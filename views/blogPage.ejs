@@ -1,0 +1,33 @@
+<%-include("partials/header.ejs")%>
+
+
+<!-- <div class="page-container">
+    <div class="title"><h1><%=title%></h1></div>
+    <div class="name"><h3>Author: <%=name%></h3></div>
+    <div class="content"><p><%=content%></p></div>
+</div> -->
+
+<!-- <button type="button"><a class="delete button" href="/delete/<%=blogId%>">Delete</a></button>
+<button type="button"><a class="edit button" href="/edit/<%=blogId%>">Edit</a></button> -->
+
+
+    <div class="container my-5 bg-body-tertiary">
+        <div class="row justify-content-center">
+            <div class="content col-lg-8 col-12 p-4">
+                <h1><%= title %></h1>
+                <h3><%=name%></h3>
+                <p><%= content %></p>
+            </div>
+            <div class="content col-lg-2 col-8 my-4 mx-4 p-4 text-center" style="height: 170px;">
+                <form action="/delete/<%=blogId%>" method="get">
+                    <input type="text" name="postId" hidden value="<%= blogId %>">
+                    <input style="width: 85%;" class="btn btn-danger fs-5 btn-lg my-2 button-rad" type="submit" name="delete" value="Delete">
+                </form>
+                <a href="/edit/<%= blogId %>"><input style="width: 85%;" class="btn btn-light fs-5 btn-lg my-2 button-rad" type="button" value="Edit"></a>
+                <a href="/"><input style="width: 85%;" class="btn btn-secondary fs-5 btn-lg my-2 button-rad" type="button" value="Back"></a>
+            </div>
+        </div>
+    </div>
+
+<%-include("partials/footer.ejs")%>
+

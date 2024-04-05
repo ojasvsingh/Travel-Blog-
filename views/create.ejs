@@ -1,0 +1,59 @@
+<%-include("partials/header.ejs")%>
+
+
+<!-- If there already is a blogId then it is being edited so display all of the blog that is already written. -->
+<% if(locals.blogId) { %>
+    <div class="container mt-3 mb-3">
+        <h1>Edit Blog Post</h1>
+        <form action="/update" method="post">
+            <div class="mb-3">
+                <label class="form-label">Author</label>
+                <input name="name" type="text" class="form-control" placeholder="Name" value="<%=name%>" required/>
+            </div>
+            <div class="mb-3">
+                    <label class="form-label">Blog Title</label>
+                    <input name="title" type="text" class="form-control" placeholder="Blog Title" value="<%=title%>" required/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Write the blog here</label>
+                <textarea name="content" class="form-control" rows="3" placeholder="Type the blog here" required><%=content%></textarea>
+            </div>
+            <div class="col-12">
+                <input type="submit" value="Publish" class="btn btn-primary"/>
+                <input hidden type="text" name="index" value="<%= blogId %>">
+            </div>
+        </form>
+    </div>
+<%  } else { %>
+    <div class="container mt-3 mb-3">
+        <h1>Create a blog!</h1>
+        <form action="/save" method="post">
+            <div class="mb-3">
+                <label class="form-label">Author</label>
+                <input name="name" type="text" class="form-control" placeholder="Name" required/>
+            </div>
+            <div class="mb-3">
+                    <label class="form-label">Blog Title</label>
+                    <input name="title" type="text" class="form-control" placeholder="Blog Title" required/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Write the blog here</label>
+                <textarea name="content" class="form-control" rows="3" placeholder="Type the blog here" required></textarea>
+            </div>
+            <div class="col-12">
+                <input type="submit" value="Publish" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+
+<%  } %>
+
+<%-include("partials/footer.ejs")%>
+
+
+    <!-- <form action="/save" method="post">
+        <input name="name" type="text" class="feedback-input" placeholder="Name" required/>
+        <input name="title" type="text" class="feedback-input" placeholder="Blog Title" required/>
+        <textarea name="content" class="feedback-input" placeholder="Type the blog here" required></textarea>
+        <input type="submit" value="Publish"/>
+    </form> -->
